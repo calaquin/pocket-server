@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+.venv/
+venv/
+.env
+.env.*
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+
+# Node (future-proofing)
+node_modules/
+
+# Pocket Server runtime & local state
+.pocket/logs/
+.pocket/*.log
+.pocket/*.pid
+.pocket/*.tmp
+.pocket/.cache/
+.pocket/doctor.sh            # local helper; keep out if you prefer
+.pocket/net_doctor.sh        # local helper; keep out if you prefer
+.pocket/merge_home_port_control.sh
+.pocket/restore_home_links_buttons.sh
+
+# Local configuration you likely don't want public
+.pocket/apps.json            # runtime registry (ports/enabled)
+.pocket/known_ssids          # your trusted SSIDs
+
+# Caddy runtime storage
+.config/caddy/
+caddy/
+
+# Backups and generated files
+pocket/index.backup.*.html
+pocket/*.bak
+pocket/*.tmp
