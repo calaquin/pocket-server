@@ -11,7 +11,7 @@
 ---
 
 ## Layout
-pocket-server-src/
+"pocket-server-src/
 ├── .pocket/ # scripts & runtime (kept local via .gitignore)
 │ ├── pocketctl # service manager (start/stop, serve_on/off, restart)
 │ ├── caddy_gen.sh # generates Caddyfile for LAN/LOCAL modes
@@ -22,7 +22,7 @@ pocket-server-src/
 │ └── known_ssids.example # sample trusted SSIDs (copy to known_ssids)
 └── pocket/ # web UI (served by Caddy)
 ├── index.html # Home (Hosting controls + Apps card)
-└── apps/welcome/ # Example app (static site via python http.server)
+└── apps/welcome/ # Example app (static site via python http.server)"
 
 ---
 
