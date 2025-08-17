@@ -1,0 +1,8 @@
+{
+  "welcome": {
+    "name": "Welcome",
+    "enabled": false,
+    "port": 5269,
+    "path": "/apps/welcome"
+  }
+}

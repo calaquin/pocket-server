@@ -1,0 +1,45 @@
+<!doctype html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pocket Server — Deep Snapshot</title><link rel="stylesheet" href="/ui.css">
+</head><body>
+<div class="nav">
+  <a href="/">Home</a>
+  <a href="/ui/overview">Overview</a>
+  <a href="/ui/deep">Deep Snapshot</a>
+  <a href="/stats" target="_blank">/stats</a>
+  <a href="/stats/deep" target="_blank">/stats/deep</a>
+</div>
+<h1>🔎 Deep Details Snapshot <span id="when" class="small"></span></h1>
+<div class="grid" id="grid">Loading…</div>
+<div style="margin-top:10px"><a class="btn" href="/ui/overview">Back to Overview</a></div>
+<script>
+function kvCard(title, rows){const card=document.createElement('div');card.className='card';const h=document.createElement('h2');h.textContent=title;card.appendChild(h);const g=document.createElement('div');g.className='kv';rows.forEach(([k,v])=>{const a=document.createElement('div');a.textContent=k;const b=document.createElement('div');b.textContent=(v==null||v==='')?'—':(typeof v==='object'?JSON.stringify(v):String(v));g.appendChild(a);g.appendChild(b);});card.appendChild(g);return card;}
+function preCard(title, obj){const card=document.createElement('div');card.className='card';const h=document.createElement('h2');h.textContent=title;card.appendChild(h);const pre=document.createElement('pre');pre.textContent=JSON.stringify(obj, null, 2);card.appendChild(pre);return card;}
+async function load(){
+  const res=await fetch('/stats/deep/snapshot');
+  const grid=document.getElementById('grid');
+  if(res.status===404){grid.textContent='No snapshot yet. Use "Load deep details" on Overview.';return;}
+  const j=await res.json();
+  document.getElementById('when').textContent=j._snapshot_saved_at?('— saved '+new Date(j._snapshot_saved_at*1000).toLocaleString()):'';
+  grid.innerHTML='';
+  grid.appendChild(kvCard('Network', [['SSID', j.wifi?.ssid], ['BSSID', j.wifi?.bssid], ['IP(s)', (j.ips||[]).join(', ')||j.wifi?.ip||'—'], ['RSSI', j.wifi?.rssi]]));
+  grid.appendChild(kvCard('Location', [['Network', j.location?.network?.provider||'—'], ['GPS fix', j.location?.gps?.provider||'—']]));
+  grid.appendChild(preCard('Sensors (list)', j.sensors?.list||[]));
+  grid.appendChild(preCard('Sensors (sample)', j.sensors?.sample||{}));
+  grid.appendChild(preCard('Telephony', j.telephony||{}));
+  grid.appendChild(preCard('Camera', j.camera||{}));
+  grid.appendChild(kvCard('Audio/TTS', [['Engines', (j.audio?.tts_engines||[]).join(', ')]]));
+  grid.appendChild(kvCard('Torch / IR', [['IR supported', j.torch_ir?.ir_supported], ['Frequencies', j.torch_ir?.ir_freqs? j.torch_ir.ir_freqs.length+' entries':'—']]));
+  grid.appendChild(kvCard('Brightness', [['Path', j.brightness?.path], ['Value', j.brightness?.value], ['Max', j.brightness?.max]]));
+  grid.appendChild(preCard('Thermals', j.thermals||[]));
+  grid.appendChild(kvCard('Battery', [['Percent', j.battery?.percentage], ['Status', j.battery?.status], ['Health', j.battery?.health], ['Voltage', j.battery?.voltage], ['Current', j.battery?.current], ['Temp °C', j.battery?.temperature]]));
+  grid.appendChild(kvCard('Storage', [['Total', j.storage?.total], ['Free', j.storage?.free]]));
+  grid.appendChild(preCard('Memory (/proc/meminfo)', j.memory||{}));
+  grid.appendChild(kvCard('CPU', [['Cores', j.cpu?.count]]));
+  grid.appendChild(kvCard('Android', [['Brand/Model', (j.android?.brand||"")+' '+(j.android?.model||"")], ['Version', j.android?.android], ['SDK', j.android?.sdk], ['Security patch', j.android?.security_patch], ['Kernel', j.android?.kernel], ['SELinux', j.android?.selinux]]));
+  grid.appendChild(kvCard('Services', Object.entries(j.services||{})));
+  grid.appendChild(kvCard('Clipboard', [['Text length', j.clipboard?.text_len]]));
+}
+load();
+</script>
+</body></html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Welcome App – Settings</title>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;max-width:720px;margin:32px auto;padding:0 16px}
+  h1{margin:0 0 12px}
+  .card{border:1px solid #ddd;border-radius:12px;padding:16px;margin:16px 0}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  input[type=number]{width:120px;padding:6px 8px;border:1px solid #bbb;border-radius:8px}
+  button{padding:8px 12px;border:1px solid #888;background:#f5f5f5;border-radius:10px;cursor:pointer}
+  button.ok{background:#e8ffe8;border-color:#6a6}
+  .muted{color:#666}
+  .pill{display:inline-block;padding:2px 8px;border:1px solid #ccc;border-radius:999px;background:#fafafa}
+  a{color:#06c;text-decoration:none} a:hover{text-decoration:underline}
+</style>
+
+<h1>Welcome App — Settings</h1>
+<p class="muted">Set a port, then click <b>Save & Restart</b>. The app will move to that port and routing updates automatically.</p>
+
+<div class="card">
+  <div class="row">
+    <label>Port:
+      <input id="port" type="number" min="1024" max="65535" step="1" required>
+    </label>
+    <button id="save" class="ok">Save & Restart</button>
+    <span id="state" class="pill">Loading…</span>
+  </div>
+
+  <div style="margin-top:12px">
+    <div class="muted">Open via Pocket Server (always works):</div>
+    <div><a id="linkProxy" href="/apps/welcome" target="_blank">/apps/welcome</a></div>
+  </div>
+
+  <div style="margin-top:12px">
+    <div class="muted">Direct on LAN (only in Serving mode):</div>
+    <div><a id="linkDirect" href="#" target="_blank">(waiting)</a></div>
+  </div>
+</div>
+
+<p><a href="/apps/welcome/">← Back to app</a> &nbsp;|&nbsp; <a href="/">Home</a></p>
+
+<script>
+const $ = s => document.querySelector(s);
+const state = m => $('#state').textContent = m;
+const host = location.hostname || '127.0.0.1';
+
+async function j(path, opts) {
+  const r = await fetch(path, Object.assign({headers:{'Content-Type':'application/json'}}, opts||{}));
+  if(!r.ok) throw new Error(await r.text().catch(()=>r.statusText));
+  return r.json();
+}
+
+function setLinks(port){
+  $('#linkProxy').href = '/apps/welcome';
+  $('#linkDirect').textContent = `http://${host}:${port}/`;
+  $('#linkDirect').href = `http://${host}:${port}/`;
+}
+
+async function loadMeta(){
+  try{
+    const m = await j('/admin/app/welcome/meta');
+    $('#port').value = m.port;
+    setLinks(m.port);
+    state('Ready');
+  }catch(e){
+    state('Meta error'); console.error(e);
+  }
+}
+
+async function save(){
+  const btn = $('#save'); btn.disabled = true;
+  try{
+    const port = parseInt($('#port').value, 10);
+    if(!(port >= 1024 && port <= 65535)) throw new Error('Invalid port (1024–65535)');
+    state('Updating…');
+    // this updates apps.json, restarts the app, and reloads Caddy
+    await j('/admin/app/welcome/port', { method:'POST', body: JSON.stringify({port}) });
+    setLinks(port);
+    state('Moved to ' + port);
+  }catch(e){
+    console.error(e); state('Error'); alert('Failed: ' + e.message);
+  }finally{
+    btn.disabled = false;
+  }
+}
+
+$('#save').addEventListener('click', save);
+loadMeta();
+</script>

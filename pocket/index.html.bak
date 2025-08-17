@@ -1,0 +1,93 @@
+<!doctype html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pocket Server — Home</title><link rel="stylesheet" href="/ui.css">
+<style>
+  .row{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+  .btn{display:inline-block;padding:10px 14px;border:1px solid #222;border-radius:12px;text-decoration:none;color:#222;cursor:pointer}
+  .ok{border-color:#1a7f37}.warn{border-color:#b33}.pill{display:inline-block;padding:2px 10px;border:1px solid #ccc;border-radius:999px}
+  input[type="number"]{padding:6px 8px;border:1px solid #ccc;border-radius:8px;width:120px}
+</style>
+</head><body>
+<div class="nav">
+  <a href="/">Home</a>
+  <a href="/ui/overview">Overview</a>
+  <a href="/ui/deep">Deep Snapshot</a>
+  <a href="/stats" target="_blank">/stats</a>
+  <a href="/stats/deep" target="_blank">/stats/deep</a>
+</div>
+
+<h1>📦 Pocket Server <small id="ssid" class="pill">SSID: …</small></h1>
+<p class="muted">Control hosting and apps. When “Stop Serving” is active, everything is still available on <code>127.0.0.1:8080</code> on your phone.</p>
+
+<div class="card">
+  <h3>Hosting</h3>
+  <div id="svcState" class="row"><span class="pill">Loading…</span></div>
+  <div class="row">
+    <button id="stopServing"  class="btn">Stop Serving (LAN)</button>
+    <button id="startServing" class="btn ok">Start Serving (LAN)</button>
+    <button id="shutdownBtn"  class="btn warn">Shut Down Pocket Server</button>
+    <button id="startBtn"     class="btn ok">Start Pocket Server</button>
+    <button id="refreshBtn"   class="btn">Refresh</button>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Apps</h3>
+  <div class="row">
+    <div>
+      <strong>Welcome</strong> — <a href="/apps/welcome" target="_blank">open</a><br>
+      <label><input type="checkbox" id="welcomeEnabled"> Enabled</label>
+      <div style="margin-top:8px">
+        <label>Port: <input type="number" id="welcomePort" min="1024" max="65535"></label>
+        <button id="saveWelcome" class="btn">Save</button>
+      </div>
+    </div>
+  </div>
+  <small class="muted">Changes restart the app and update routing automatically.</small>
+</div>
+
+<script>
+async function fetchJSON(url, opts){ const r=await fetch(url,opts); if(!r.ok) throw new Error(r.status); return r.json(); }
+
+async function loadSSID(){
+  try{ const s=await fetchJSON('/stats'); const ssid=s?.network?.ssid; if(ssid) document.getElementById('ssid').textContent='SSID: '+ssid; }catch{}
+}
+async function state(){
+  try{
+    const j = await fetchJSON('/admin/status'); const s = j.services || {};
+    document.getElementById('svcState').innerHTML =
+      `<span class="pill">caddy: ${s.caddy||'?'}</span> <span class="pill">stats: ${s.stats||'?'}</span> <span class="pill">mode: ${s.serve_mode||'?'}</span>`;
+    document.getElementById('stopServing').disabled  = (s.caddy!=='running') || (s.serve_mode==='local');
+    document.getElementById('startServing').disabled = (s.caddy!=='running') ? false : (s.serve_mode==='lan');
+    document.getElementById('startBtn').disabled     = (s.caddy==='running' || s.stats==='running') && !s.disabled;
+  }catch{ document.getElementById('svcState').innerHTML = '<span class="pill">API offline</span>'; }
+}
+async function loadApps(){
+  try{
+    const a = await fetchJSON('/apps'); const w = a.apps?.welcome || {};
+    document.getElementById('welcomeEnabled').checked = !!w.enabled;
+    document.getElementById('welcomePort').value = w.port || 5210;
+  }catch{}
+}
+async function stopServing(){ const b=this; b.disabled=true; b.textContent='Switching…'; try{ await fetch('/admin/serve_local',{method:'POST'});}catch{} setTimeout(()=>{b.disabled=false;b.textContent='Stop Serving (LAN)'; state();},700); }
+async function startServing(){ const b=this; b.disabled=true; b.textContent='Starting…'; try{ await fetch('/admin/serve_on',{method:'POST'});}catch{} setTimeout(()=>{b.disabled=false;b.textContent='Start Serving (LAN)'; state();},700); }
+async function shutdownAll(){ const b=this; b.disabled=true; b.textContent='Shutting down…'; try{ await fetch('/admin/stop',{method:'POST'});}catch{} setTimeout(()=>{b.disabled=false;b.textContent='Shut Down Pocket Server'; state();},800); }
+async function startAll(){ const b=this; b.disabled=true; b.textContent='Starting…'; try{ await fetch('/admin/start',{method:'POST'});}catch{} setTimeout(()=>{b.disabled=false;b.textContent='Start Pocket Server'; state();},800); }
+async function saveWelcome(){
+  const enabled = document.getElementById('welcomeEnabled').checked;
+  const port = parseInt(document.getElementById('welcomePort').value||'5210',10);
+  try{ await fetch('/apps/welcome/port',{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({port})}); }catch{}
+  try{ await fetch('/apps/welcome/toggle?enabled='+(enabled?'true':'false'),{method:'POST'});}catch{}
+  setTimeout(loadApps,600);
+}
+
+document.getElementById('stopServing').onclick  = stopServing;
+document.getElementById('startServing').onclick = startServing;
+document.getElementById('shutdownBtn').onclick  = shutdownAll;
+document.getElementById('startBtn').onclick     = startAll;
+document.getElementById('refreshBtn').onclick   = ()=>{state();loadSSID();loadApps();};
+document.getElementById('saveWelcome').onclick  = saveWelcome;
+
+loadSSID(); state(); loadApps();
+</script>
+</body></html>

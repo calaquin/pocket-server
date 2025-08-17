@@ -1,0 +1,121 @@
+#!/data/data/com.termux/files/usr/bin/sh
+set -eu
+
+BIN="/data/data/com.termux/files/usr/bin"
+HOME="/data/data/com.termux/files/home"
+LOGDIR="$HOME/.pocket/logs"
+STATS_SESS="pocket-stats"
+CADDY_SESS="pocket-caddy"
+DISABLED_FLAG="$HOME/.pocket/.disabled"
+SERVE_MODE_FILE="$HOME/.pocket/.serve_mode"  # "lan" or "local"
+
+say(){ $BIN/termux-toast -s "$1" >/dev/null 2>&1 || true; }
+mode(){ [ -f "$SERVE_MODE_FILE" ] && cat "$SERVE_MODE_FILE" || echo "lan"; }
+
+status() {
+  s_stats="stopped"; s_caddy="stopped"
+  $BIN/tmux has-session -t "$STATS_SESS" 2>/dev/null && s_stats="running"
+  $BIN/tmux has-session -t "$CADDY_SESS" 2>/dev/null && s_caddy="running"
+  m="$(mode)"
+  printf '{"stats":"%s","caddy":"%s","disabled":%s,"serve_mode":"%s"}\n' \
+         "$s_stats" "$s_caddy" "$( [ -f "$DISABLED_FLAG" ] && echo true || echo false )" "$m"
+}
+
+kill_port_8080() {
+  if command -v ss >/dev/null 2>&1; then
+    for pid in $(ss -ltnp 2>/dev/null | awk '/:8080[[:space:]]/ {for(i=1;i<=NF;i++) if($i ~ /pid=/){sub(/pid=/,"",$i); sub(/,.*/,"",$i); print $i}}'); do
+      kill -TERM "$pid" 2>/dev/null || true
+    done
+    sleep 0.2
+    for pid in $(ss -ltnp 2>/dev/null | awk '/:8080[[:space:]]/ {for(i=1;i<=NF;i++) if($i ~ /pid=/){sub(/pid=/,"",$i); sub(/,.*/,"",$i); print $i}}'); do
+      kill -KILL "$pid" 2>/dev/null || true
+    done
+  fi
+  pkill -f "caddy.*Caddyfile" 2>/dev/null || true
+  pkill -f "/data/.*/caddy" 2>/dev/null || true
+  pkill -f "toybox httpd" 2>/dev/null || true
+  pkill -f "busybox httpd" 2>/dev/null || true
+}
+
+start() {
+  rm -f "$DISABLED_FLAG" || true
+  mkdir -p "$LOGDIR"
+  # API
+  if ! $BIN/tmux has-session -t "$STATS_SESS" 2>/dev/null; then
+    $BIN/tmux new-session -d -s "$STATS_SESS" "cd $HOME/.pocket && uvicorn --host 127.0.0.1 --port 5201 --workers 1 --log-level info stats_starlette:app >> $LOGDIR/pocket-stats.log 2>&1"
+  fi
+  # Caddy (based on mode)
+  m="$(mode)"; cfg="$HOME/pocket/Caddyfile.$m"
+  if ! $BIN/tmux has-session -t "$CADDY_SESS" 2>/dev/null; then
+    $BIN/tmux new-session -d -s "$CADDY_SESS" "cd $HOME/pocket && caddy run --config \"$cfg\" >> $LOGDIR/pocket-caddy.log 2>&1"
+  fi
+  say "Pocket Server: Started ($m)"
+}
+
+stop() {
+  : > "$DISABLED_FLAG"
+  $BIN/tmux has-session -t "$STATS_SESS" 2>/dev/null && $BIN/tmux kill-session -t "$STATS_SESS" || true
+  $BIN/tmux has-session -t "$CADDY_SESS" 2>/dev/null && $BIN/tmux kill-session -t "$CADDY_SESS" || true
+  pkill -f "uvicorn.*stats_starlette:app" 2>/dev/null || true
+  pkill -f "caddy run" 2>/dev/null || true
+  kill_port_8080
+  say "Pocket Server: Stopped"
+}
+
+restart(){ stop; sleep 0.3; start; }
+
+# -------- serving modes --------
+serve_start() {  # Start Serving (LAN)
+  rm -f "$DISABLED_FLAG" || true
+  echo "lan" > "$SERVE_MODE_FILE"
+  $BIN/tmux has-session -t "$CADDY_SESS" 2>/dev/null && $BIN/tmux kill-session -t "$CADDY_SESS" || true
+  pkill -f "caddy run" 2>/dev/null || true
+  kill_port_8080
+  $BIN/tmux new-session -d -s "$CADDY_SESS" "cd $HOME/pocket && caddy run --config \"$HOME/pocket/Caddyfile.lan\" >> $LOGDIR/pocket-caddy.log 2>&1"
+  say "Serving ON (LAN :8080)"
+}
+
+serve_local() {  # Stop Serving (LOCAL-only)
+  rm -f "$DISABLED_FLAG" || true
+  echo "local" > "$SERVE_MODE_FILE"
+  $BIN/tmux has-session -t "$CADDY_SESS" 2>/dev/null && $BIN/tmux kill-session -t "$CADDY_SESS" || true
+  pkill -f "caddy run" 2>/dev/null || true
+  kill_port_8080
+  $BIN/tmux new-session -d -s "$CADDY_SESS" "cd $HOME/pocket && caddy run --config \"$HOME/pocket/Caddyfile.local\" >> $LOGDIR/pocket-caddy.log 2>&1"
+  say "Serving OFF (LOCAL 127.0.0.1:8080)"
+}
+
+enable(){ rm -f "$DISABLED_FLAG" 2>/dev/null || true; say "Pocket Server: Enabled"; }
+disable(){ : > "$DISABLED_FLAG"; say "Pocket Server: Disabled"; }
+
+# -------- apps helpers (underscore names) --------
+app_reload(){
+  $HOME/.pocket/caddy_gen.sh
+  if $BIN/tmux has-session -t "$CADDY_SESS" 2>/dev/null; then
+    m="$(mode)"
+    $BIN/tmux kill-session -t "$CADDY_SESS" || true
+    pkill -f "caddy run" 2>/dev/null || true
+    cfg="$HOME/pocket/Caddyfile.$m"
+    $BIN/tmux new-session -d -s "$CADDY_SESS" "cd $HOME/pocket && caddy run --config \"$cfg\" >> $LOGDIR/pocket-caddy.log 2>&1"
+  fi
+}
+
+app_start(){ app="${1:?}"; "$HOME/.pocket/appctl" start "$app"; app_reload; }
+app_stop(){  app="${1:?}"; "$HOME/.pocket/appctl"  stop "$app";  app_reload; }
+
+# -------- dispatcher (accepts dash or underscore) --------
+cmd="${1:-status}"; shift || true
+case "$cmd" in
+  status)             status ;;
+  start)              start ;;
+  stop)               stop ;;
+  restart)            restart ;;
+  serve-start|serve_start)  serve_start ;;
+  serve-local|serve_local)  serve_local ;;
+  enable)             enable ;;
+  disable)            disable ;;
+  app-reload|app_reload)    app_reload ;;
+  app-start|app_start)      app_start "${1:?app}" ;;
+  app-stop|app_stop)        app_stop  "${1:?app}" ;;
+  *) echo "usage: $0 {status|start|stop|restart|serve-start|serve-local|enable|disable|app-reload|app-start <app>|app-stop <app>}" >&2; exit 2 ;;
+esac

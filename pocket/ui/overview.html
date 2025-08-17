@@ -1,0 +1,42 @@
+<!doctype html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pocket Server — Overview</title><link rel="stylesheet" href="/ui.css">
+</head><body>
+<div class="nav">
+  <a href="/">Home</a>
+  <a href="/ui/overview">Overview</a>
+  <a href="/ui/deep">Deep Snapshot</a>
+  <a href="/stats" target="_blank">/stats</a>
+  <a href="/stats/deep" target="_blank">/stats/deep</a>
+</div>
+<h1>📋 Overview <small id="asof"></small></h1>
+<div class="grid">
+  <div class="card"><h3>Network <span class="badge" id="net-ts"></span></h3><div class="kv" id="net">Loading…</div><button class="btn" onclick="ref('network')">Refresh</button></div>
+  <div class="card"><h3>Device <span class="badge" id="dev-ts"></span></h3><div class="kv" id="dev"></div><button class="btn" onclick="ref('device')">Refresh</button></div>
+  <div class="card"><h3>System <span class="badge" id="sys-ts"></span></h3><div class="kv" id="sys"></div><button class="btn" onclick="ref('system')">Refresh</button></div>
+  <div class="card"><h3>Battery <span class="badge" id="bat-ts"></span></h3><div class="kv" id="bat"></div><button class="btn" onclick="ref('battery')">Refresh</button></div>
+  <div class="card"><h3>Services <span class="badge" id="svc-ts"></span></h3><div class="kv" id="svc"></div><button class="btn" onclick="ref('services')">Refresh</button></div>
+</div>
+<script>
+function row(c,k,v){const a=document.createElement('div');a.textContent=k;const b=document.createElement('div');b.textContent=(v==null||v==='')?'—':String(v);c.appendChild(a);c.appendChild(b);}
+function setTS(id,ts){document.getElementById(id).textContent=ts?('cached '+new Date(ts*1000).toLocaleTimeString()):'';}
+async function paint(){
+  let s;
+  try{
+    s = await fetch('/stats').then(r=>r.json());
+  }catch(e){
+    document.body.insertAdjacentHTML('beforeend','<p class="muted">API offline — try again after starting Pocket Server.</p>');
+    return;
+  }
+  document.getElementById('asof').textContent='as of '+new Date(s.time*1000).toLocaleString();
+  const net=document.getElementById('net'); net.innerHTML='';
+  row(net,'SSID',s.network?.ssid); row(net,'BSSID',s.network?.bssid); row(net,'IP(s)',(s.network?.ips||[]).join(', ')||s.network?.ip||'—'); row(net,'RSSI',s.network?.rssi); setTS('net-ts', s.network?._cached_at);
+  const dev=document.getElementById('dev'); dev.innerHTML=''; row(dev,'Brand',s.device?.brand); row(dev,'Model',s.device?.model); row(dev,'Android',s.device?.android); row(dev,'SDK',s.device?.sdk); row(dev,'Security patch',s.device?.security_patch); row(dev,'Kernel',s.device?.kernel); row(dev,'SELinux',s.device?.selinux); setTS('dev-ts', s.device?._cached_at);
+  const sys=document.getElementById('sys'); sys.innerHTML=''; row(sys,'CPU cores',s.system?.cpu?.count); row(sys,'Uptime (min)',Math.floor((s.system?.uptime_sec||0)/60)); row(sys,'MemTotal',s.system?.memory?.MemTotal); row(sys,'MemAvailable',s.system?.memory?.MemAvailable); row(sys,'Storage total',s.system?.storage?.total); row(sys,'Storage free',s.system?.storage?.free); setTS('sys-ts', s.system?._cached_at);
+  const bat=document.getElementById('bat'); bat.innerHTML=''; const b=s.battery||{}; row(bat,'Percent',b.percentage!=null?b.percentage+'%':'—'); row(bat,'Status',b.status); row(bat,'Health',b.health); row(bat,'Voltage',b.voltage); row(bat,'Current',b.current); row(bat,'Temp °C',b.temperature); setTS('bat-ts', s.battery?._cached_at);
+  const svc=document.getElementById('svc'); svc.innerHTML=''; for (const [k,v] of Object.entries(s.services||{})) row(svc,k,v); setTS('svc-ts', s.services?._cached_at);
+}
+async function ref(group){ await fetch('/stats/refresh?group='+encodeURIComponent(group),{method:'POST'}); await paint(); }
+paint();
+</script>
+</body></html>

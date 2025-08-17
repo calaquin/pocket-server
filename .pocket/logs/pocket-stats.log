@@ -1,0 +1,1000 @@
+[32mINFO[0m:     Started server process [[36m5221[0m]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
+[32mINFO[0m:     Uvicorn running on [1mhttp://127.0.0.1:5201[0m (Press CTRL+C to quit)
+[32mINFO[0m:     127.0.0.1:53792 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     127.0.0.1:48208 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:46842 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:46846 - "[1mGET /stats/deep HTTP/1.1[0m" [91m500 Internal Server Error[0m
+[31mERROR[0m:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/.pocket/stats_starlette.py", line 258, in stats_deep
+    "thermals": thermals(),
+                ^^^^^^^^^^
+  File "/data/data/com.termux/files/home/.pocket/stats_starlette.py", line 194, in thermals
+    for name in os.listdir(base):
+                ^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/sys/class/thermal'
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET / HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     Started server process [[36m7922[0m]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
+[32mINFO[0m:     Uvicorn running on [1mhttp://127.0.0.1:5201[0m (Press CTRL+C to quit)
+[32mINFO[0m:     127.0.0.1:45442 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:45444 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:45446 - "[1mGET /stats/deep HTTP/1.1[0m" [91m500 Internal Server Error[0m
+[31mERROR[0m:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/.pocket/stats_starlette.py", line 258, in stats_deep
+    "thermals": thermals(),
+                ^^^^^^^^^^
+  File "/data/data/com.termux/files/home/.pocket/stats_starlette.py", line 194, in thermals
+    for name in os.listdir(base):
+                ^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/sys/class/thermal'
+[32mINFO[0m:     127.0.0.1:45450 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET / HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET / HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET / HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET / HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /deep HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/sensors HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/deep HTTP/1.1[0m" [91m500 Internal Server Error[0m
+[31mERROR[0m:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/.pocket/stats_starlette.py", line 258, in stats_deep
+    "thermals": thermals(),
+                ^^^^^^^^^^
+  File "/data/data/com.termux/files/home/.pocket/stats_starlette.py", line 194, in thermals
+    for name in os.listdir(base):
+                ^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/sys/class/thermal'
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     Started server process [[36m12448[0m]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
+[32mINFO[0m:     Uvicorn running on [1mhttp://127.0.0.1:5201[0m (Press CTRL+C to quit)
+[32mINFO[0m:     127.0.0.1:51920 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     Started server process [[36m13920[0m]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
+[32mINFO[0m:     Uvicorn running on [1mhttp://127.0.0.1:5201[0m (Press CTRL+C to quit)
+[32mINFO[0m:     127.0.0.1:42048 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:42062 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:42084 - "[1mGET /stats/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     Started server process [[36m18697[0m]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
+[32mINFO[0m:     Uvicorn running on [1mhttp://127.0.0.1:5201[0m (Press CTRL+C to quit)
+[32mINFO[0m:     127.0.0.1:51034 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     Started server process [[36m21344[0m]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
+[32mINFO[0m:     Uvicorn running on [1mhttp://127.0.0.1:5201[0m (Press CTRL+C to quit)
+[32mINFO[0m:     127.0.0.1:37214 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:51728 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:51744 - "[1mGET /stats/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:34836 - "[1mGET /stats/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     Started server process [[36m24467[0m]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
+[32mINFO[0m:     Uvicorn running on [1mhttp://127.0.0.1:5201[0m (Press CTRL+C to quit)
+[32mINFO[0m:     127.0.0.1:58694 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:52816 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:52822 - "[1mGET /stats/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/dashboard HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     Started server process [[36m26305[0m]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
+[32mINFO[0m:     Uvicorn running on [1mhttp://127.0.0.1:5201[0m (Press CTRL+C to quit)
+[32mINFO[0m:     127.0.0.1:42646 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/dashboard HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     Started server process [[36m32350[0m]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
+[32mINFO[0m:     Uvicorn running on [1mhttp://127.0.0.1:5201[0m (Press CTRL+C to quit)
+[32mINFO[0m:     127.0.0.1:51196 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/dashboard HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/live HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/dashboard HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     Started server process [[36m6478[0m]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
+[32mINFO[0m:     Uvicorn running on [1mhttp://127.0.0.1:5201[0m (Press CTRL+C to quit)
+[32mINFO[0m:     127.0.0.1:36748 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/stats HTTP/1.1[0m" [31m404 Not Found[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mPOST /stats/deep/snapshot HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mPOST /stats/deep/snapshot HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/deep/snapshot HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     Started server process [[36m10636[0m]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
+[32mINFO[0m:     Uvicorn running on [1mhttp://127.0.0.1:5201[0m (Press CTRL+C to quit)
+[32mINFO[0m:     127.0.0.1:55858 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/deep/snapshot HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mPOST /stats/refresh?group=device HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mPOST /stats/refresh?group=device HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mPOST /stats/refresh?group=network HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/__main__.py", line 4, in <module>
+    uvicorn.main()
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/click/core.py", line 1442, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/click/core.py", line 1363, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/click/core.py", line 1226, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/click/core.py", line 794, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/main.py", line 413, in main
+    run(
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/main.py", line 580, in run
+    server.run()
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/config.py", line 436, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/data/data/com.termux/files/home/.pocket/stats_starlette.py", line 1, in <module>
+    OK
+NameError: name 'OK' is not defined
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/__main__.py", line 4, in <module>
+    uvicorn.main()
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/click/core.py", line 1442, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/click/core.py", line 1363, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/click/core.py", line 1226, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/click/core.py", line 794, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/main.py", line 413, in main
+    run(
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/main.py", line 580, in run
+    server.run()
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/config.py", line 436, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/data/data/com.termux/files/home/.pocket/stats_starlette.py", line 333
+    function row(c,k,v){const a=document.createElement('div');a.textContent=k;const b=document.createElement('div');b.textContent=(v==null||v==='')?'—':String(v);c.appendChild(a);c.appendChild(b);}
+                        ^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/__main__.py", line 4, in <module>
+    uvicorn.main()
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/click/core.py", line 1442, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/click/core.py", line 1363, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/click/core.py", line 1226, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/click/core.py", line 794, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/main.py", line 413, in main
+    run(
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/main.py", line 580, in run
+    server.run()
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/config.py", line 436, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1133, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1063, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/data/data/com.termux/files/home/.pocket/stats_starlette.py", line 333
+    function row(c,k,v){const a=document.createElement('div');a.textContent=k;const b=document.createElement('div');b.textContent=(v==null||v==='')?'—':String(v);c.appendChild(a);c.appendChild(b);}
+                        ^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+[32mINFO[0m:     Started server process [[36m16461[0m]
+[32mINFO[0m:     Waiting for application startup.
+[32mINFO[0m:     Application startup complete.
+[32mINFO[0m:     Uvicorn running on [1mhttp://127.0.0.1:5201[0m (Press CTRL+C to quit)
+[32mINFO[0m:     127.0.0.1:46712 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:46726 - "[1mGET /health HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     127.0.0.1:46742 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/deep HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats/deep/snapshot HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mPOST /stats/refresh?group=device HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mPOST /stats/refresh?group=system HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /ui/overview HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mPOST /stats/refresh?group=network HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mPOST /stats/refresh?group=battery HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     10.0.0.185:0 - "[1mGET /stats HTTP/1.1[0m" [32m200 OK[0m
+INFO:     Started server process [24018]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:34898 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34902 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [24195]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     Started server process [25985]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:40614 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /stats/refresh?group=network HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats/deep/snapshot HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [26936]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:57862 - "GET /health HTTP/1.1" 200 OK
+INFO:     Started server process [27444]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /stats/refresh?group=network HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [28044]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /stats/refresh?group=network HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [29109]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     Started server process [29278]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:49550 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /admin/serve_off HTTP/1.1" 200 OK
+INFO:     Started server process [29490]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50060 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [29652]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:55482 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [29750]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55504 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [31057]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [31231]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:40824 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /admin/serve_off HTTP/1.1" 200 OK
+INFO:     Started server process [31681]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:40404 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /admin/serve_off HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40834 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41754 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [32262]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:34918 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /admin/serve_on HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38152 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34484 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34982 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43070 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [3215]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:40284 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46520 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46536 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46536 - "GET /admin/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35126 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56354 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [5330]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59058 - "GET /admin/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40964 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40964 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54604 - "GET /stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54610 - "GET /stats/deep HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50930 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [6967]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52598 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54808 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [7722]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:47504 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /apps HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /apps HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /apps HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /apps HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44822 - "GET /admin/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60970 - "GET / HTTP/1.1" 404 Not Found
+INFO:     10.0.0.185:0 - "GET /apps HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /apps HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /apps HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /apps HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /apps HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /admin/serve_local HTTP/1.1" 404 Not Found
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /admin/serve_local HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     Started server process [10616]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [11006]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /stats/deep/snapshot HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /stats/refresh?group=network HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /stats/refresh?group=network HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /stats/refresh?group=device HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     Started server process [13965]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     Started server process [14401]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51000 - "GET /stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51014 - "GET /stats/deep HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36916 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [15199]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /stats/refresh?group=network HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     Started server process [15532]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51100 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [15838]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:57508 - "GET /admin/status HTTP/1.1" 200 OK
+INFO:     Started server process [17041]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     127.0.0.1:48946 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48958 - "POST /admin/app/welcome/port HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /stats/refresh?group=device HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     Started server process [18013]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     Started server process [18588]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /admin/app/welcome/port HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /admin/app/welcome/port HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "POST /admin/app/welcome/port HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     Started server process [19201]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     Started server process [19687]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     127.0.0.1:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin HTTP/1.1" 404 Not Found
+INFO:     Started server process [20375]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /stats/refresh?group=network HTTP/1.1" 200 OK
+INFO:     Started server process [12043]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:5201 (Press CTRL+C to quit)
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /stats/refresh?group=network HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /admin/app/welcome/port HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /admin/app/welcome/toggle?enabled=false HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /admin/app/welcome/port HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "POST /admin/app/welcome/port HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /stats HTTP/1.1" 200 OK
+INFO:     10.0.0.185:0 - "GET /admin/app/welcome/meta HTTP/1.1" 200 OK

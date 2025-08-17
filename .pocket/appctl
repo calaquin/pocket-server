@@ -1,0 +1,49 @@
+#!/data/data/com.termux/files/usr/bin/sh
+set -eu
+
+# Paths
+BIN="/data/data/com.termux/files/usr/bin"
+HOME="/data/data/com.termux/files/home"
+REG="$HOME/.pocket/apps.json"
+LOGDIR="$HOME/.pocket/logs"; mkdir -p "$LOGDIR"
+SERVE_MODE_FILE="$HOME/.pocket/.serve_mode"
+
+# Helpers
+mode(){ [ -f "$SERVE_MODE_FILE" ] && cat "$SERVE_MODE_FILE" || echo "lan"; }
+
+status_one(){
+  app="$1"; sess="app-$app"
+  "$BIN/tmux" has-session -t "$sess" 2>/dev/null && echo running || echo stopped
+}
+
+start_one(){
+  app="$1"; sess="app-$app"
+  # read desired port from registry
+  port="$("$BIN/jq" -r --arg a "$app" '.[$a].port' "$REG")"
+  # bind address depends on serving mode
+  BIND="127.0.0.1"; [ "$(mode)" = "lan" ] && BIND="0.0.0.0"
+  case "$app" in
+    welcome)
+      dir="$HOME/pocket/apps/welcome"
+      mkdir -p "$dir"
+      [ -f "$dir/index.html" ] || printf '<h1>Welcome app</h1><p>It works.</p>' > "$dir/index.html"
+      "$BIN/tmux" has-session -t "$sess" 2>/dev/null || \
+        "$BIN/tmux" new-session -d -s "$sess" "cd \"$dir\" && python -m http.server \"$port\" --bind \"$BIND\" >> \"$LOGDIR/app-$app.log\" 2>&1"
+      ;;
+    *)
+      echo "unknown app: $app" >&2; exit 2;;
+  esac
+}
+
+stop_one(){
+  app="$1"; sess="app-$app"
+  "$BIN/tmux" has-session -t "$sess" 2>/dev/null && "$BIN/tmux" kill-session -t "$sess" || true
+}
+
+case "${1:-}" in
+  status)   app="${2:?app}"; status_one "$app" ;;
+  start)    app="${2:?app}"; start_one "$app" ;;
+  stop)     app="${2:?app}"; stop_one "$app" ;;
+  restart)  app="${2:?app}"; stop_one "$app"; sleep 0.2; start_one "$app" ;;
+  *) echo "usage: $0 {status|start|stop|restart} <app>"; exit 2;;
+esac

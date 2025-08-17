@@ -1,0 +1,44 @@
+127.0.0.1 - - [17/Aug/2025 15:31:21] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [17/Aug/2025 15:31:21] "POST /port HTTP/1.1" 501 -
+127.0.0.1 - - [17/Aug/2025 15:31:21] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [17/Aug/2025 15:31:21] "POST /toggle?enabled=true HTTP/1.1" 501 -
+127.0.0.1 - - [17/Aug/2025 15:31:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [17/Aug/2025 15:31:42] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [17/Aug/2025 15:31:42] "POST /port HTTP/1.1" 501 -
+127.0.0.1 - - [17/Aug/2025 15:31:42] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [17/Aug/2025 15:31:42] "POST /toggle?enabled=true HTTP/1.1" 501 -
+127.0.0.1 - - [17/Aug/2025 15:31:44] "GET / HTTP/1.1" 200 -
+10.0.0.185 - - [17/Aug/2025 15:32:51] "GET / HTTP/1.1" 200 -
+10.0.0.185 - - [17/Aug/2025 15:32:51] code 404, message File not found
+10.0.0.185 - - [17/Aug/2025 15:32:51] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [17/Aug/2025 15:33:09] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [17/Aug/2025 15:33:09] "POST /port HTTP/1.1" 501 -
+127.0.0.1 - - [17/Aug/2025 15:33:09] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [17/Aug/2025 15:33:09] "POST /toggle?enabled=true HTTP/1.1" 501 -
+127.0.0.1 - - [17/Aug/2025 15:33:09] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [17/Aug/2025 15:33:09] "POST /port HTTP/1.1" 501 -
+127.0.0.1 - - [17/Aug/2025 15:33:10] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [17/Aug/2025 15:33:10] "POST /toggle?enabled=true HTTP/1.1" 501 -
+127.0.0.1 - - [17/Aug/2025 15:33:24] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [17/Aug/2025 15:33:24] "POST /port HTTP/1.1" 501 -
+127.0.0.1 - - [17/Aug/2025 15:33:24] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [17/Aug/2025 15:33:24] "POST /toggle?enabled=false HTTP/1.1" 501 -
+127.0.0.1 - - [17/Aug/2025 15:42:04] "GET / HTTP/1.1" 200 -
+10.0.0.185 - - [17/Aug/2025 15:43:11] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [17/Aug/2025 15:57:10] "GET / HTTP/1.1" 200 -
+10.0.0.129 - - [17/Aug/2025 15:57:45] "HEAD / HTTP/1.1" 200 -
+10.0.0.185 - - [17/Aug/2025 15:58:15] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [17/Aug/2025 16:06:17] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [17/Aug/2025 16:06:28] "GET / HTTP/1.1" 304 -
+10.0.0.185 - - [17/Aug/2025 16:18:52] "GET / HTTP/1.1" 200 -
+10.0.0.185 - - [17/Aug/2025 16:18:52] code 404, message File not found
+10.0.0.185 - - [17/Aug/2025 16:18:52] "GET /favicon.ico HTTP/1.1" 404 -
+10.0.0.185 - - [17/Aug/2025 16:19:11] "GET / HTTP/1.1" 200 -
+10.0.0.185 - - [17/Aug/2025 16:19:11] code 404, message File not found
+10.0.0.185 - - [17/Aug/2025 16:19:11] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [17/Aug/2025 16:19:59] "GET / HTTP/1.1" 200 -
+10.0.0.185 - - [17/Aug/2025 16:29:18] "GET / HTTP/1.1" 304 -
+10.0.0.185 - - [17/Aug/2025 16:30:31] "GET / HTTP/1.1" 304 -
+10.0.0.185 - - [17/Aug/2025 16:31:16] "GET / HTTP/1.1" 200 -
+10.0.0.185 - - [17/Aug/2025 16:31:16] code 404, message File not found
+10.0.0.185 - - [17/Aug/2025 16:31:16] "GET /favicon.ico HTTP/1.1" 404 -

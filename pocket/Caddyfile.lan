@@ -1,0 +1,19 @@
+:8080 {
+  root * /data/data/com.termux/files/home/pocket
+  encode zstd gzip
+  @api {
+    path /stats*
+    path /admin*
+  }
+  reverse_proxy @api 127.0.0.1:5201
+
+  handle_path /ui/overview* {
+    rewrite * /ui/overview.html
+    file_server
+  }
+  handle_path /ui/deep* {
+    rewrite * /ui/deep.html
+    file_server
+  }
+  file_server
+}
